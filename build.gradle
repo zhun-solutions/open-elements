@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+}
+ 
+group 'com.zhun.euon'
+version '0.0.1'
+
+sourceCompatibility = 11
+
+repositories {
+		mavenCentral()
+        flatDir {
+        dirs 'lib'
+    }
+}
+
+dependencies {
+    implementation(
+    	'com.zhun.euon:euon-base-ele-lib-v1:0.0.1',
+    	'com.zhun.euon:euon-app-exec-cntx-v1:0.0.1',
+    	'org.apache.ignite:ignite-core:2.9.1',
+     )
+}
+jar {
+    archiveName 'euon-base-ele-lib-v1-0.0.1.jar'
+}

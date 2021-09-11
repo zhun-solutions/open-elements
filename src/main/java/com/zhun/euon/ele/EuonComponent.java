@@ -1,19 +1,10 @@
 package com.zhun.euon.ele;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.util.HashMap;
-
-import javax.json.bind.JsonbBuilder;
-import javax.json.bind.JsonbConfig;
-import javax.json.bind.annotation.JsonbProperty;
-import javax.json.bind.config.PropertyVisibilityStrategy;
-
  
 public class EuonComponent extends EuonUnit{
 private EuonCore definition;
-@JsonbProperty("elementmetadata")
-private EuonMetadata metaData;
+ private EuonMetadata metaData;
 private EuonContext context;
 private EuonData data;
 public EuonCore getDefinition() {
