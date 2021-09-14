@@ -22,5 +22,5 @@ dependencies {
      )
 }
 jar {
-    archiveName 'euon-base-ele-lib-v1-0.0.1.jar'
+    archiveName 'euon-ele-lib-v1-0.0.1.jar'
 }
