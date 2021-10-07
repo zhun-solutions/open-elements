@@ -1,10 +1,17 @@
 package com.zhun.euon.ele;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+
+import com.zhun.euon.api.exec.event.cntxt.EVENTFLAG;
+import com.zhun.euon.api.exec.process.cntxt.EventContext;
+import com.zhun.euon.api.exec.process.cntxt.EventContextState;
+import com.zhun.euon.api.exec.process.cntxt.ProcessContext;
 
  //@NodeEntity
 public class EuonUnit extends EuonElementImpl{
 private HashMap<String, EuonField>fields= new HashMap<>();
+private EuonContext euonContext;
 
 
 //private HashMap<String,HashMap<String,EuonUnit>> relationalElements ;
@@ -48,6 +55,41 @@ public Object getFieldValue(String name)
 {
 return  fields.get(name).getFieldValue();	
 }
+public EuonContext getEuonContext() {
+	return euonContext;
+}
+public void setEuonContext(EuonContext context) {
+	this.euonContext = context;
+}
+
+public void setEuonContextBasic(String StatusMessage, String EventName, String EventType, EVENTFLAG eventFlag, String evtContext) {
+	EventContextState eventContextState = new EventContextState();
+    eventContextState.setStatusMessage(StatusMessage);
+    
+    EventContext eventContext = new EventContext();
+    eventContext.setProcessContextState(eventContextState);
+    eventContext.setProcessContextState(eventContextState);
+    eventContext.setEventName(EventName);
+    eventContext.setEventType(EventType);
+    eventContext.addEventFlag(eventFlag);
+    eventContext.setEventContext(evtContext);
+    
+    EuonContext euonContext = new EuonContext();
+    euonContext.setContext(eventContext);
+    
+    this.euonContext = euonContext;
+}
+
+//public void updateEventName(String eventName) {
+//	ProcessContext pc = this.euonContext.getContext();
+//	pc.setEventName(eventName);
+//}
+//public void updateEventType(String eventType) {
+//	
+//}
+//public void updateEventFlag(EVENTFLAG eventFlag) {
+//	
+//}
 
 //
 //

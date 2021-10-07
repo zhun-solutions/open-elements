@@ -4,9 +4,14 @@ import java.util.HashMap;
  
 public class EuonComponent extends EuonUnit{
 private EuonCore definition;
- private EuonMetadata metaData;
-private EuonContext context;
-private EuonData data;
+private EuonMetadata metaData;
+private EuonData fieldsData;
+
+
+public EuonComponent() {
+	super();
+	this.fieldsData= new EuonData();
+}
 public EuonCore getDefinition() {
 	return definition;
 }
@@ -19,17 +24,11 @@ public EuonMetadata getMetaData() {
 public void setMetaData(EuonMetadata metaData) {
 	this.metaData = metaData;
 }
-public EuonContext getContext() {
-	return context;
-}
-public void setContext(EuonContext context) {
-	this.context = context;
-}
 public EuonData getData() {
-	return data;
+	return fieldsData;
 }
-public void setData(EuonData data) {
-	this.data = data;
+public void setFieldsData(EuonData data) {
+	this.fieldsData = data;
 }
 
 public void loadMetadataValue(String name,String value)
@@ -37,13 +36,11 @@ public void loadMetadataValue(String name,String value)
 	metaData.setFieldValue( name,value);	
 }
 
-public void setData(String key,HashMap<String,Object> data) {
-	this.data=new EuonData(key, data);
+public void setData(HashMap<String,Object> data) {
+	this.fieldsData.setCoreData(data);	
 }
-public void setData(String parent,String key,Object data) {
- EuonData ed = new EuonData(parent) ;
- ed.setCoreData(key, data);
- this.data=ed;
+public void setData(String key,Object data) {
+ this.fieldsData.setCoreData(key, data);
  
 }
 public String getMetadata(String str) {
