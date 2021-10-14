@@ -8,8 +8,8 @@ import java.util.UUID;
 import com.zhun.euon.ele.EuonComponent;
 
 public class VuiElement extends EuonComponent{
-	private String name;
-	private String type;
+//	private String name;
+//	private String type;
 	private UUID pId;
 	private UUID sId;
 	private Map<String,VuiElement> childMap;
@@ -24,18 +24,18 @@ public class VuiElement extends EuonComponent{
 		childList= new LinkedList<>();
 		fieldsMap= new HashMap<String, Object>();
 	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getType() {
-		return type;
-	}
-	public void setType(String type) {
-		this.type = type;
-	}
+//	public String getName() {
+//		return name;
+//	}
+//	public void setName(String name) {
+//		this.name = name;
+//	}
+//	public String getType() {
+//		return type;
+//	}
+//	public void setType(String type) {
+//		this.type = type;
+//	}
 	public UUID getpId() {
 		return pId;
 	}

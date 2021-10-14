@@ -25,6 +25,10 @@ public HashMap getCoreData() {
 	return coreData;
 }
 
+
+public void setCoreData(HashMap<String,Object> coreDataMap) {
+	this.coreData.putAll(coreDataMap);
+	}
 public void setCoreData(String key,Object coreData) {
 	this.coreData.put(key, coreData);
 }
