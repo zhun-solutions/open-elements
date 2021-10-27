@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
 
  maven {
-            url "http://localhost:8082/artifactory/zhun-gradle-dev/"
+            url "http://192.168.1.103:8082/artifactory/zhun-gradle-dev/"
     allowInsecureProtocol=true
      credentials {
          
@@ -23,7 +23,7 @@ allprojects {
     repositories {
        mavenCentral()
  maven {
-            url "http://localhost:8082/artifactory/zhun-gradle-dev/"
+            url "http://192.168.1.103:8082/artifactory/zhun-gradle-dev/"
     allowInsecureProtocol=true
  credentials {
          
@@ -63,7 +63,7 @@ publishing {
 }
 
 artifactory {
-    contextUrl = 'http://localhost:8082/artifactory'
+    contextUrl = 'http://192.168.1.103:8082/artifactory'
     publish {
         repository {
             repoKey = 'zhun-gradle-dev-local'
