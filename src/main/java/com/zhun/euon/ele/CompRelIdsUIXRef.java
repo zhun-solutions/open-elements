@@ -4,11 +4,9 @@ import java.util.HashMap;
 import java.util.UUID;
 
  
-public class CompRelIdsUIXRef extends EuonElementImpl {
+public class CompRelIdsUIXRef extends CompositionRelation {
 	private UUID relId;
 	private UUID 	verId;
-	private UUID 	composeeId;
-	private UUID 	compositerId;
 	private int progress;
 	private HashMap<String,String> fields= new HashMap<String,String>();
 	public UUID getRelId() {
@@ -23,19 +21,6 @@ public class CompRelIdsUIXRef extends EuonElementImpl {
 	public void setVerId(UUID verId) {
 		this.verId = verId;
 	}
-	public UUID getComposeeId() {
-		return composeeId;
-	}
-	public void setComposeeId(UUID composeeId) {
-		this.composeeId = composeeId;
-	}
-	public UUID getCompositerId() {
-		return compositerId;
-	}
-	public void setCompositerId(UUID compositerId) {
-		this.compositerId = compositerId;
-	}
- 
 	public int getProgress() {
 		return progress;
 	}
@@ -64,10 +49,10 @@ public class CompRelIdsUIXRef extends EuonElementImpl {
 		sb.append(this.relId);
 		sb.append("</relId>");
 		sb.append("<composeeId>");
-		sb.append(this.composeeId);
+		sb.append(this.getComposeeId());
 		sb.append("</composeeId>");
 		sb.append("<compositerId>");
-		sb.append(this.compositerId);
+		sb.append(this.getCompositerId());
 		sb.append("</compositerId>");
 		sb.append("</"+this.getClass().getSimpleName()+">");
 		return super.toString();
