@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
 
  maven {
-            url "http://localhost:8082/artifactory/zhun-gradle-dev-local/"
+            url "http://zhun-dev.com:8082/artifactory/zhun-gradle-dev-local/"
     allowInsecureProtocol=true
      credentials {
          
@@ -23,7 +23,7 @@ allprojects {
     repositories {
        mavenCentral()
  maven {
-            url "http://localhost:8082/artifactory/zhun-gradle-dev-local/"
+            url "http://zhun-dev.com:8082/artifactory/zhun-gradle-dev-local/"
     allowInsecureProtocol=true
  credentials {
          
@@ -35,21 +35,21 @@ allprojects {
     }
 }
 
-version = currentVersion
 
 apply plugin: 'com.jfrog.artifactory'
 apply plugin: 'java'
 apply plugin: 'maven-publish'
 group 'com.zhun.euon'
-version '0.0.2'
+version '0.0.3'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
-sourceCompatibility = 11
 
 dependencies {
     implementation(
     	'org.apache.ignite:ignite-core:2.9.1',
-	'com.zhun.euon:euon-base-ele-lib-v1:0.0.1',
-        'com.zhun.euon:euon-app-exec-cntx-v1:0.0.7'   	
+	'com.zhun.euon:euon-base-ele-lib-v1:0.0.2',
+        'com.zhun.euon:euon-app-exec-cntx-v1:0.0.8'   	
       ) 
 
 } 
@@ -63,7 +63,7 @@ publishing {
 }
 
 artifactory {
-    contextUrl = 'http://localhost:8082/artifactory'
+    contextUrl = 'http://zhun-dev.com:8082/artifactory'
     publish {
         repository {
             repoKey = 'zhun-gradle-dev-local'
