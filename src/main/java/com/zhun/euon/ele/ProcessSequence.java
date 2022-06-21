@@ -33,7 +33,7 @@ public void setStrat_id(String strat_id) {
 
 
  
-	public String getElementString() {
+		public String getElementString() {
 		StringBuilder sb= new StringBuilder();
 		sb.append("<soruceId>");
 		sb.append(soruceId);

@@ -1,0 +1,85 @@
+buildscript {
+    repositories {
+        mavenCentral()
+
+ maven {
+            url "http://zhun-dev.com:8082/artifactory/zhun-gradle-dev-local/"
+    allowInsecureProtocol=true
+     credentials {
+         
+                username = "${artifactory_user}"
+            password = "${artifactory_password}"
+        }
+
+        }
+}
+    dependencies {
+        classpath(group: 'org.jfrog.buildinfo', name: 'build-info-extractor-gradle', version: '4.+')
+        
+    }
+}
+                            
+allprojects {
+    repositories {
+       mavenCentral()
+ maven {
+            url "http://zhun-dev.com:8082/artifactory/zhun-gradle-dev-local/"
+    allowInsecureProtocol=true
+ credentials {
+         
+                username = "${artifactory_user}"
+            password = "${artifactory_password}"
+        }
+
+        }
+    }
+}
+
+
+apply plugin: 'com.jfrog.artifactory'
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+group 'com.zhun.euon'
+version '0.0.3'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+
+dependencies {
+    implementation(
+    	'org.apache.ignite:ignite-core:2.9.1',
+	'com.zhun.euon:euon-base-ele-lib-v1:0.0.2',
+        'com.zhun.euon:euon-app-exec-cntx-v1:0.0.8'   	
+      ) 
+
+} 
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+}
+
+artifactory {
+    contextUrl = 'http://zhun-dev.com:8082/artifactory'
+    publish {
+        repository {
+            repoKey = 'zhun-gradle-dev-local'
+            username = "${artifactory_user}"
+            password = "${artifactory_password}"
+        }
+        defaults {
+            // Reference to Gradle publications defined in the build script.
+            // This is how we tell the Artifactory Plugin which artifacts should be
+            // published to Artifactory.
+            publications('mavenJava')
+            publishArtifacts = true
+            // Properties to be attached to the published artifacts.
+            properties = ['qa.level': 'basic', 'dev.team' : 'core']
+            // Publish generated POM files to Artifactory (true by default)
+            publishPom = true
+        }
+    }
+}
