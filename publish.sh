@@ -1,3 +1,3 @@
 gradle build
-gradle publishToMavenLocal
+#gradle publishToMavenLocal
 gradle artifactoryPublish
